@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent_60">
+
+    <LinearLayout
+        android:id="@+id/pop_layout"
+        android:layout_width="0dp"
+        android:layout_height="154dp"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <TextView
+            android:id="@+id/pop_take_photo_tv"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_96px"
+            android:gravity="center"
+            android:text="@string/take_photo"
+            android:textColor="@color/black_1_c"
+            android:textSize="@dimen/text_32px" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/divider_eb_c" />
+
+        <TextView
+            android:id="@+id/pop_album_tv"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_96px"
+            android:gravity="center"
+            android:text="@string/from_album"
+            android:textColor="@color/black_1_c"
+            android:textSize="@dimen/text_32px" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_20px"
+            android:background="@color/gray_f5_c" />
+
+        <TextView
+            android:id="@+id/pop_cancel_tv"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_96px"
+            android:gravity="center"
+            android:text="@string/cancel"
+            android:textColor="@color/black_1_c"
+            android:textSize="@dimen/text_32px" />
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="select_btn" type="id"/>
+    <item name="holder_tag" type="id"/>
+    <item name="press" type="id"/>
+    <item name="ok_btn" type="id"/>
+    <item name="pbar" type="id"/>
+    <item name="load_layout" type="id"/>
+    <item name="selected_num" type="id"/>
+</resources>

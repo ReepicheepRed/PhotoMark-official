@@ -1,0 +1,41 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_size_normal">23dp</dimen>
+    <dimen name="design_fab_size_mini" tools:override="true">23dp</dimen>
+    <dimen name="margin_60px">30dp</dimen>
+    <dimen name="height_600px">300dp</dimen>
+    <dimen name="height_900px">450dp</dimen>
+    <dimen name="height_204px">102dp</dimen>
+    <dimen name="margin_16px">8dp</dimen>
+    <dimen name="margin_30px">15dp</dimen>
+    <dimen name="margin_20px">10dp</dimen>
+    <dimen name="text_32px">16sp</dimen>
+    <dimen name="height_218px">109dp</dimen>
+    <dimen name="margin_36px">18dp</dimen>
+    <dimen name="height_90px">45dp</dimen>
+    <dimen name="height_162px">81dp</dimen>
+    <dimen name="divider_2px">1dp</dimen>
+    <dimen name="height_88px">44dp</dimen>
+    <dimen name="margin_24px">12dp</dimen>
+    <dimen name="text_30px">15sp</dimen>
+    <dimen name="margin_148px">74dp</dimen>
+    <dimen name="margin_80px">40dp</dimen>
+    <dimen name="text_26px">13sp</dimen>
+    <dimen name="height_630px">315dp</dimen>
+    <dimen name="height_422px">211dp</dimen>
+    <dimen name="margin_38px">19dp</dimen>
+    <dimen name="margin_272px">136dp</dimen>
+    <dimen name="margin_40px">20dp</dimen>
+    <dimen name="height_430px">215dp</dimen>
+    <dimen name="height_72px">36dp</dimen>
+    <dimen name="height_180px">90dp</dimen>
+    <dimen name="margin_22px">11dp</dimen>
+    <dimen name="height_96px">48dp</dimen>
+    <dimen name="height_100px">50dp</dimen>
+    <dimen name="height_56px">28dp</dimen>
+    <dimen name="height_200px">100dp</dimen>
+    <dimen name="height_250px">125dp</dimen>
+    <dimen name="height_1062px">531dp</dimen>
+</resources>

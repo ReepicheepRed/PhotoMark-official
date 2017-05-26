@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3f51b5</color>
+    <color name="colorPrimaryDark">@color/dark_1_c</color>
+    <color name="colorAccent">#ff4081</color>
+    <color name="white">#FFFFFF</color>
+    <color name="dark_1b_c">#1b1b1b</color>
+    <color name="dark_36_c">#363636</color>
+    <color name="dark_1_c">#111111</color>
+    <color name="red_border_c">#e50755</color>
+    <color name="gray_70_c">#707070</color>
+    <color name="text_7c_c">#7c7c7c</color>
+    <color name="gray_93_c">#939393</color>
+    <color name="gray_3fe_c">#3f3e3e</color>
+    <color name="transparent_60">#99000000</color>
+    <color name="transparent_30">#4c000000</color>
+    <color name="black_1_c">#111111</color>
+    <color name="divider_eb_c">#ebebeb</color>
+    <color name="gray_f5_c">#f5f5f5</color>
+
+    <!--text color start-->
+    <color name="color_1">#D63B4B</color>
+    <color name="color_2">#FFDCBE</color>
+    <color name="color_3">#CDE6C8</color>
+    <color name="color_4">#AFB5D9</color>
+    <color name="color_5">#928597</color>
+    <color name="color_6">#F6ACBB</color>
+
+    <color name="color_7">#AFDEE4</color>
+    <color name="color_8">#DFC674</color>
+    <color name="color_9">#92D6ED</color>
+    <color name="color_10">#F0725B</color>
+    <color name="color_11">#85BF96</color>
+    <color name="color_12">#78AB98</color>
+
+    <color name="color_13">#45B97C</color>
+    <color name="color_14">#D63B4B</color>
+    <color name="color_15">#CD9A5B</color>
+    <color name="color_16">#66C195</color>
+    <color name="color_17">#A0393A</color>
+    <color name="color_18">#F47A55</color>
+
+    <color name="color_19">#78CDD0</color>
+    <color name="color_20">#9D9087</color>
+    <color name="color_21">#8B8C8E</color>
+    <color name="color_22">#7D8578</color>
+    <color name="color_23">#32A4DA</color>
+    <color name="color_24">#FFD401</color>
+
+    <color name="color_25">#6E61A9</color>
+    <color name="color_26">#8551A4</color>
+    <color name="color_27">#027846</color>
+    <color name="color_28">#C73C27</color>
+    <color name="color_29">#E1861B</color>
+    <color name="color_30">#281E1C</color>
+    <!--text color end-->
+</resources>

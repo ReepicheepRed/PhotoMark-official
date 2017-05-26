@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
+
+    <TextView
+        android:id="@+id/iPoster_type_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/height_72px"
+        android:layout_marginTop="@dimen/margin_20px"
+        android:gravity="center"
+        android:text="                 "
+        android:textColor="@color/gray_70_c" />
+
+</FrameLayout>

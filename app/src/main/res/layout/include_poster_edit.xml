@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/poster_edit_rl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/dark_36_c"
+    tools:context="me.jessyan.mvparms.photomark.mvp.ui.activity.PosterEditActivity">
+
+    <include
+        layout="@layout/actionbar_base"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="@dimen/margin_38px"
+        android:layout_marginRight="@dimen/margin_38px"
+        android:layout_weight="1"
+        >
+        <!--android:background="@android:color/holo_green_light"-->
+        <com.martin.poster.PosterView
+            android:id="@+id/posterView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+             />
+        <!--android:background="@android:color/holo_orange_light"-->
+    </FrameLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/iPoster_recently_rv"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_218px"
+        android:layout_marginBottom="-90dp"
+        android:background="@color/dark_1_c"
+        android:paddingBottom="@dimen/margin_20px"
+        android:paddingTop="@dimen/margin_36px"
+        tools:listitem="@layout/item_poster" />
+</LinearLayout>

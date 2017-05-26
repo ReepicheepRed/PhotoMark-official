@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        layout="@layout/include_poster_edit"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/poster_float"
+        android:src="@mipmap/ic_up_toggle"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
+        app:fabSize="mini"
+        app:rippleColor="@android:color/white"
+        app:layout_behavior="me.jessyan.mvparms.photomark.mvp.ui.widget.DependentBehavior"
+        app:layout_anchor="@+id/iPoster_recently_rv"
+        app:layout_anchorGravity="right|top"/>
+
+
+</android.support.design.widget.CoordinatorLayout>

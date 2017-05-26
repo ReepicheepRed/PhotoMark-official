@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data >
+        <import type="me.jessyan.mvparms.photomark.mvp.ui.widget.PopPoster"/>
+        <variable
+            name="popup"
+            type="PopPoster"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent_30"
+        android:gravity="bottom">
+
+        <LinearLayout
+            android:id="@+id/pop_poster_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_88px"
+                android:background="@color/dark_1b_c"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/margin_30px">
+
+                <EditText
+                    android:id="@+id/ipte_et"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/height_56px"
+                    android:layout_weight="1"
+                    android:background="@android:color/white"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Name" />
+
+                <ImageView
+                    android:id="@+id/ipte_keyboard_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:onClick="@{popup::onClick}"
+                    android:paddingLeft="@dimen/margin_24px"
+                    android:src="@drawable/selector_text_keyboard" />
+
+                <ImageView
+                    android:id="@+id/ipte_confirm_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:onClick="@{popup::onClick}"
+                    android:paddingLeft="@dimen/margin_24px"
+                    android:paddingRight="@dimen/margin_30px"
+                    android:src="@mipmap/ic_confirm_btn" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ipte_attrib_ll"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_100px"
+                android:background="@color/dark_1b_c"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ipte_color_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/selector_text_color"
+                    android:drawablePadding="@dimen/margin_20px"
+                    android:gravity="center_vertical"
+                    android:onClick="@{popup::onClick}"
+                    android:paddingLeft="@dimen/margin_148px"
+                    android:text="Color"
+                    android:textColor="@color/gray_70_c"
+                    android:textSize="@dimen/text_30px" />
+
+                <TextView
+                    android:id="@+id/ipte_text_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/selector_text"
+                    android:drawablePadding="@dimen/margin_20px"
+                    android:gravity="center_vertical"
+                    android:onClick="@{popup::onClick}"
+                    android:paddingLeft="@dimen/margin_80px"
+                    android:text="Text"
+                    android:textColor="@color/gray_70_c"
+                    android:textSize="@dimen/text_30px" />
+
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/ipte_rv"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_250px"
+                android:background="@color/dark_1b_c" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</layout>

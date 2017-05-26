@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">PhotoMark</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string-array name="entry_name">
+        <item>拍照水印</item>
+        <item>批量水印</item>
+        <item>简洁拼图</item>
+        <item>商品海报</item>
+    </string-array>
+
+    <string name="login_title">欢迎登录</string>
+    <string name="phone">手机号</string>
+    <string name="verify_code">验证码</string>
+    <string name="obtain_verify_code">获取验证码</string>
+    <string name="login">登录</string>
+    <string name="complete">完成</string>
+
+    <string name="watermark">水印</string>
+    <string name="label">标签</string>
+    <string name="filter">滤镜</string>
+
+    <string name="title">标题</string>
+    <string name="title_hint">输入标题</string>
+    <string name="back">返回</string>
+    <string name="preview">预览</string>
+    <string name="generate">生成</string>
+    <string name="save">保存</string>
+    <string name="add_label">添加标签</string>
+
+    <string name="simple_puzzle">简洁拼图</string>
+    <string name="begin_making">开始制作</string>
+    <string name="selected_picture">已经添加了%1$d了照片</string>
+</resources>
