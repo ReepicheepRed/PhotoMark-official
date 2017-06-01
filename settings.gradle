@@ -1,2 +1,2 @@
-include ':poster', ':gridImage'
+include ':poster', ':gridImage', ':library-gallery'
 include ':app', ':arms', ':rxerrorhandler'

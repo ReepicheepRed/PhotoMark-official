@@ -38,4 +38,7 @@
     <dimen name="height_200px">100dp</dimen>
     <dimen name="height_250px">125dp</dimen>
     <dimen name="height_1062px">531dp</dimen>
+    <dimen name="height_838px">419dp</dimen>
+    <dimen name="margin_190px">95dp</dimen>
+    <dimen name="height_500px">250dp</dimen>
 </resources>

@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CompleteProject.iml" filepath="$PROJECT_DIR$/CompleteProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PhotoMark-official.iml" filepath="$PROJECT_DIR$/PhotoMark-official.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/arms/arms.iml" filepath="$PROJECT_DIR$/arms/arms.iml" />
       <module fileurl="file://$PROJECT_DIR$/gridImage/gridImage.iml" filepath="$PROJECT_DIR$/gridImage/gridImage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library-gallery/library-gallery.iml" filepath="$PROJECT_DIR$/library-gallery/library-gallery.iml" />
       <module fileurl="file://$PROJECT_DIR$/poster/poster.iml" filepath="$PROJECT_DIR$/poster/poster.iml" />
       <module fileurl="file://$PROJECT_DIR$/rxerrorhandler/rxerrorhandler.iml" filepath="$PROJECT_DIR$/rxerrorhandler/rxerrorhandler.iml" />
     </modules>

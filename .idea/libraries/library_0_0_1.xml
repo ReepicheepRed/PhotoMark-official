@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="library-0.0.1">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.android/build-cache/a817abd4ab7453ceaaa898646ba4135e386040b3/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/a817abd4ab7453ceaaa898646ba4135e386040b3/output/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/jameson.io.library/library/0.0.1/d6f4d2b97fdbf1c15b70070558fa2fecd994f5c1/library-0.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

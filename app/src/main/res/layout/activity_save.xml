@@ -30,7 +30,7 @@
         android:drawablePadding="@dimen/margin_36px"
         android:gravity="center_vertical"
         android:paddingLeft="@dimen/margin_272px"
-        android:text="Saved"
+        android:text="@string/save_tip"
         android:textColor="@color/gray_93_c"
         android:textSize="@dimen/text_32px" />
 
@@ -83,7 +83,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/margin_60px"
         android:background="@drawable/ic_continue_btn"
-        android:text="Another"
+        android:text="@string/new_poster"
         android:textAllCaps="false"
         android:textColor="@color/dark_1_c"
         android:textSize="@dimen/text_32px" />

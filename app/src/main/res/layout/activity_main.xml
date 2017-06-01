@@ -1,6 +1,55 @@
-<android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="me.jessyan.mvparms.photomark.mvp.ui.activity.MainActivity" />
+    android:background="@mipmap/ic_poster_bg"
+    android:orientation="vertical"
+    tools:context="me.jessyan.mvparms.photomark.mvp.ui.activity.MainActivity">
+
+    <ImageView
+        android:id="@+id/blurView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#3f000000"
+        android:scaleType="centerCrop" />
+
+    <com.view.jameson.library.SpeedRecyclerView
+        android:id="@+id/main_banner_rv"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_838px"
+        android:layout_marginTop="@dimen/margin_190px" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:padding="@dimen/margin_30px"
+        android:src="@mipmap/posterify_logo" />
+
+    <ImageView
+        android:id="@+id/main_setting_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:padding="@dimen/margin_30px"
+        android:src="@mipmap/ic_settings_tb" />
+
+    <TextView
+        android:id="@+id/main_poster_btn"
+        android:layout_width="@dimen/height_500px"
+        android:layout_height="@dimen/height_88px"
+        android:layout_below="@+id/main_banner_rv"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/ic_continue_btn"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="@string/new_poster"
+        android:textColor="@color/dark_3_c" />
+</RelativeLayout>

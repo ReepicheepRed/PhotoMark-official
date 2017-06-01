@@ -11,6 +11,7 @@ import com.jess.arms.utils.Preconditions.checkNotNull
 import com.jess.arms.utils.UiUtils
 import common.AppComponent
 import common.WEActivity
+import kotlinx.android.synthetic.main.actionbar_base.*
 import me.jessyan.mvparms.photomark.R
 import me.jessyan.mvparms.photomark.di.component.DaggerSaveComponent
 import me.jessyan.mvparms.photomark.di.module.SaveModule
@@ -49,14 +50,17 @@ class SaveActivity : WEActivity<SavePresenter>(), SaveContract.View {
 
     override fun initData() {
         mPresenter.showPicture(preview, intent.getStringArrayListExtra("pictures"))
+        headline.text = getString(R.string.save_title)
+        right.text =  getString(R.string.home)
 
     }
 
-    @OnClick(R.id.save_another_btn, R.id.back_iv)
+    @OnClick(R.id.save_another_btn, R.id.back_iv,R.id.right)
     override fun onClick(v: View) {
         super.onClick(v)
         when (v.id) {
             R.id.back_iv -> killMyself()
+            R.id.right -> launchActivity(Intent(this, PosterMainActivity::class.java))
             R.id.save_another_btn -> launchActivity(Intent(this, PosterActivity::class.java))
         }
     }

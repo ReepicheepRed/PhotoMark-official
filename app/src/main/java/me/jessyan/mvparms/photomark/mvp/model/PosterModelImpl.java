@@ -34,17 +34,18 @@ public class PosterModelImpl extends BaseModel<ServiceManager, CacheManager> imp
     @Override
     public Observable<BaseJson<List<PList>>> getPoster(int type,boolean update) {
         Observable<BaseJson<List<PList>>> data = mServiceManager.getPosterService().getPosters(type);
+        return data;
         //使用rxcache缓存,上拉刷新则不读取缓存,加载更多读取缓存
-        return mCacheManager.getCommonCache()
-                .getPosters(data
-                        , new DynamicKey(type)
-                        , new EvictDynamicKey(update))
-                .flatMap(new Func1<Reply<BaseJson<List<PList>>>, Observable<BaseJson<List<PList>>>>() {
-                    @Override
-                    public Observable<BaseJson<List<PList>>> call(Reply<BaseJson<List<PList>>> listReply) {
-                        return Observable.just(listReply.getData());
-                    }
-                });
+//        return mCacheManager.getCommonCache()
+//                .getPosters(data
+//                        , new DynamicKey(type)
+//                        , new EvictDynamicKey(update))
+//                .flatMap(new Func1<Reply<BaseJson<List<PList>>>, Observable<BaseJson<List<PList>>>>() {
+//                    @Override
+//                    public Observable<BaseJson<List<PList>>> call(Reply<BaseJson<List<PList>>> listReply) {
+//                        return Observable.just(listReply.getData());
+//                    }
+//                });
     }
 
     @Override

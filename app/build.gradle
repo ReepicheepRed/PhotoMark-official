@@ -18,6 +18,13 @@ android {
         versionCode rootProject.ext.android["versionCode"]
         versionName rootProject.ext.android["versionName"]
         testInstrumentationRunner rootProject.ext.dependencies["androidJUnitRunner"]
+
+        vectorDrawables.useSupportLibrary = true
+
+        //启用renderscript
+        renderscriptTargetApi = 18
+        renderscriptSupportModeEnabled = true
+
     }
     buildTypes {
 
@@ -98,6 +105,7 @@ dependencies {
 
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     kapt "com.android.databinding:compiler:$android_plugin_version"
+    compile project(path: ':library-gallery')
 }
 repositories {
     mavenCentral()

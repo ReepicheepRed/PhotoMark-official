@@ -41,19 +41,19 @@
             <!-- </intent-filter> -->
         </activity>
         <activity
-            android:name=".mvp.ui.activity.MainActivity">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
-
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-        </activity>
-        <activity android:name=".mvp.ui.activity.PosterActivity">
+            android:name=".mvp.ui.activity.PosterMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".mvp.ui.activity.PosterActivity">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
         <activity android:name=".mvp.ui.activity.PosterEditActivity" />
         <activity android:name=".mvp.ui.activity.SaveActivity" />

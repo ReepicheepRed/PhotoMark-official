@@ -18,7 +18,7 @@ import rx.Observable;
  */
 
 public class PosterContract {
-    
+
 public interface View extends BaseView{
     void setAdapter(DefaultAdapter adapter);
     void setTypeAdapter(DefaultAdapter adapter);

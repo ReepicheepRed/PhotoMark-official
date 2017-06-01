@@ -2,6 +2,7 @@ package me.jessyan.mvparms.photomark.mvp.model.api.service;
 
 import java.util.List;
 
+import me.jessyan.mvparms.photomark.mvp.model.entity.Banner;
 import me.jessyan.mvparms.photomark.mvp.model.entity.BaseJson;
 import me.jessyan.mvparms.photomark.mvp.model.entity.Font;
 import me.jessyan.mvparms.photomark.mvp.model.entity.PAtt;
@@ -24,10 +25,10 @@ public interface PosterService {
 //    @GET("/Poster/PosterList.ashx")
 //    Observable<BaseJson<List<PList>>> getPosters(@Query("type") int type, @Query("per_page") int perPage);
 
-    @GET("/Poster/PosterList.ashx")
+    @GET("/Poster/PosterList.ashx?client=1")
     Observable<BaseJson<List<PList>>> getPosters(@Query("type") int type);
 
-    @GET("/Poster/PosterDetial.ashx")
+    @GET("/Poster/AndroidPosterDetial.ashx")
     Observable<BaseJson<List<PAtt>>> getPAtt(@Query("pid") int pid);
 
     @GET("/Poster/PosterTypes.ashx")
@@ -35,4 +36,7 @@ public interface PosterService {
 
     @GET("/Poster/FontsList.ashx")
     Observable<BaseJson<List<Font>>> getFont();
+
+    @GET("/Banner/banner.ashx?client=1")
+    Observable<BaseJson<List<Banner>>> getBanner();
 }

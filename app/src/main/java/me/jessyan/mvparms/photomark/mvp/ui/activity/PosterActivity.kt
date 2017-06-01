@@ -8,15 +8,15 @@ import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
-
+import butterknife.OnClick
 import com.jess.arms.base.DefaultAdapter
 import com.jess.arms.utils.UiUtils
 import com.paginate.Paginate
 import com.tbruyelle.rxpermissions.RxPermissions
-
-import butterknife.BindView
 import common.AppComponent
 import common.WEActivity
+import kotlinx.android.synthetic.main.actionbar_base.*
+import kotlinx.android.synthetic.main.activity_poster.*
 import me.jessyan.mvparms.photomark.R
 import me.jessyan.mvparms.photomark.app.utils.Preferences
 import me.jessyan.mvparms.photomark.di.component.DaggerPosterComponent
@@ -25,9 +25,7 @@ import me.jessyan.mvparms.photomark.mvp.contract.PosterContract
 import me.jessyan.mvparms.photomark.mvp.presenter.PosterPresenterImpl
 import rx.Observable
 import rx.android.schedulers.AndroidSchedulers
-import rx.functions.Action1
 import timber.log.Timber
-import kotlinx.android.synthetic.main.activity_poster.*
 
 /**
  * Created by zhiPeng.S on 2017/5/9.
@@ -54,17 +52,22 @@ class PosterActivity : WEActivity<PosterPresenterImpl>(), PosterContract.View, S
     }
 
     override fun initData() {
+        headline.text = getString(R.string.poster_template)
         mPresenter.requestPoster(true)
         mPresenter.requestPosterType()
         Preferences.instance().clearRecord(this)
     }
 
+    @OnClick(R.id.back_iv)
     override fun onClick(v: View) {
-
+        when(v.id){
+            R.id.back_iv -> killMyself()
+        }
     }
 
     override fun onRefresh() {
         mPresenter.requestPoster(true)
+
     }
 
     private fun initRecycleView() {

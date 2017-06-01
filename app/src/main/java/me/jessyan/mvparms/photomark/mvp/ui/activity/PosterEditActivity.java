@@ -3,6 +3,7 @@ package me.jessyan.mvparms.photomark.mvp.ui.activity;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +11,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -68,8 +70,12 @@ public class PosterEditActivity extends WEActivity<PosterEditPresenterImpl>imple
     PosterView posterView;
     private TextView curEditText;
 
+    @BindView(R.id.headline)
+    TextView title;
     @BindView(R.id.right)
     TextView saveTv;
+    @BindView(R.id.back_iv)
+    ImageView back;
 
     private PopPhoto popPhoto;
     private PopPoster popPoster;
@@ -94,7 +100,10 @@ public class PosterEditActivity extends WEActivity<PosterEditPresenterImpl>imple
     protected void initData() {
         AndroidBug5497Workaround.assistActivity(this);
         panelHideHeight = getResources().getDimensionPixelSize(R.dimen.height_180px);
+        title.setText(R.string.poster);
         saveTv.setText(R.string.save);
+        saveTv.setTypeface(Typeface.MONOSPACE);
+        back.setOnClickListener(this);
         popPhoto = new PopPhoto(this);
         popPoster = new PopPoster(this);
         initPoster();
@@ -124,6 +133,9 @@ public class PosterEditActivity extends WEActivity<PosterEditPresenterImpl>imple
         }
 
         switch (v.getId()){
+            case R.id.back_iv:
+                killMyself();
+                break;
             case R.id.poster_float:
                 if(isPanelShowing)
                     hideStylePanel();
