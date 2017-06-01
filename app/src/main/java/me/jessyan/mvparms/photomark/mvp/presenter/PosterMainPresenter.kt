@@ -1,6 +1,7 @@
 package me.jessyan.mvparms.photomark.mvp.presenter
 
 import android.app.Application
+import android.content.Intent
 import android.view.View
 import com.jess.arms.base.AppManager
 import com.jess.arms.base.DefaultAdapter
@@ -9,8 +10,8 @@ import com.jess.arms.mvp.BasePresenter
 import com.jess.arms.utils.RxUtils
 import com.jess.arms.widget.imageloader.ImageLoader
 import me.jessyan.mvparms.photomark.mvp.contract.PosterMainContract
-import me.jessyan.mvparms.photomark.mvp.model.entity.Banner
-import me.jessyan.mvparms.photomark.mvp.model.entity.BaseJson
+import me.jessyan.mvparms.photomark.mvp.model.entity.*
+import me.jessyan.mvparms.photomark.mvp.ui.activity.PosterEditActivity
 import me.jessyan.mvparms.photomark.mvp.ui.adapter.PosterBannerAdapter
 import me.jessyan.rxerrorhandler.core.RxErrorHandler
 import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber
@@ -40,6 +41,8 @@ class PosterMainPresenter @Inject
 constructor(model: PosterMainContract.Model, rootView: PosterMainContract.View, private var mErrorHandler: RxErrorHandler?, private var mApplication: Application?, private var mImageLoader: ImageLoader?, private var mAppManager: AppManager?) : BasePresenter<PosterMainContract.Model, PosterMainContract.View>(model, rootView),DefaultAdapter.OnRecyclerViewItemClickListener<Banner> {
     private var data: MutableList<Banner>? = ArrayList()
     private var adapter: DefaultAdapter<*>? = null
+    private var poster : Poster? = Poster()
+
     init {
         adapter = PosterBannerAdapter(data)
         adapter!!.setOnItemClickListener(this)
@@ -68,8 +71,51 @@ constructor(model: PosterMainContract.Model, rootView: PosterMainContract.View, 
                 })
     }
 
-    override fun onItemClick(view: View?, data: Banner?, position: Int) {
+    fun requestPoster(pid : Int){
+        mModel.getPoster(pid,true)
+                .subscribeOn(Schedulers.io())
+                .retryWhen(RetryWithDelay(1, 1))//遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
+                .doOnSubscribe({
 
+                })
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doAfterTerminate({
+
+                })
+                .compose(RxUtils.bindToLifecycle<BaseJson<List<PList>>>(mRootView))//使用RXlifecycle,使subscription和activity一起销毁
+                .subscribe(object : ErrorHandleSubscriber<BaseJson<List<PList>>>(mErrorHandler) {
+                    override fun onNext(result: BaseJson<List<PList>>) {
+                        poster?.intro = result.data[0]
+                        if (poster?.atts != null) mRootView.launchActivity(Intent(mApplication,PosterEditActivity::class.java).putExtra("poster",poster))
+                    }
+                })
+    }
+
+    fun requestAttribute(pid : Int){
+        mModel.getPAtt(pid,true)
+                .subscribeOn(Schedulers.io())
+                .retryWhen(RetryWithDelay(1, 1))//遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
+                .doOnSubscribe({
+
+                })
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doAfterTerminate({
+
+                })
+                .compose(RxUtils.bindToLifecycle<BaseJson<List<PAtt>>>(mRootView))//使用RXlifecycle,使subscription和activity一起销毁
+                .subscribe(object : ErrorHandleSubscriber<BaseJson<List<PAtt>>>(mErrorHandler) {
+                    override fun onNext(result: BaseJson<List<PAtt>>) {
+                        poster?.atts = result.data
+                        if (poster?.intro != null) mRootView.launchActivity(Intent(mApplication,PosterEditActivity::class.java).putExtra("poster",poster))
+                    }
+                })
+    }
+
+    override fun onItemClick(view: View?, data: Banner?, position: Int) {
+        requestPoster(data!!.pid)
+        requestAttribute(data.pid)
     }
 
     override fun onDestroy() {

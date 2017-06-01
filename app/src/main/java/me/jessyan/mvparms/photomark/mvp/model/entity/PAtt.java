@@ -53,6 +53,18 @@ public class PAtt implements Serializable{
     private int bottompadding;
     private int leftpadding;
     private int rightpadding;
+    /**
+     * width : 397
+     * height : 92
+     * fontid : 8
+     * fontname : bigcaslon
+     * fontlink : http://192.168.126.63:8888//images/posters/fonts/bigcaslon.ttf
+     */
+
+    private int fontid;
+    private String fontname;
+    private String fontlink;
+
 
     public boolean isIsimage() {
         return isimage;
@@ -228,5 +240,29 @@ public class PAtt implements Serializable{
 
     public void setRightpadding(int rightpadding) {
         this.rightpadding = rightpadding;
+    }
+
+    public int getFontid() {
+        return fontid;
+    }
+
+    public void setFontid(int fontid) {
+        this.fontid = fontid;
+    }
+
+    public String getFontname() {
+        return fontname;
+    }
+
+    public void setFontname(String fontname) {
+        this.fontname = fontname;
+    }
+
+    public String getFontlink() {
+        return fontlink;
+    }
+
+    public void setFontlink(String fontlink) {
+        this.fontlink = fontlink;
     }
 }

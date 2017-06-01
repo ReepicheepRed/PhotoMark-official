@@ -5,6 +5,8 @@ import com.jess.arms.mvp.BaseView
 import com.jess.arms.mvp.IModel
 import me.jessyan.mvparms.photomark.mvp.model.entity.Banner
 import me.jessyan.mvparms.photomark.mvp.model.entity.BaseJson
+import me.jessyan.mvparms.photomark.mvp.model.entity.PAtt
+import me.jessyan.mvparms.photomark.mvp.model.entity.PList
 import rx.Observable
 
 /**
@@ -29,5 +31,7 @@ interface PosterMainContract {
     //Model层定义接口,外部只需关心model返回的数据,无需关心内部细节,及是否使用缓存
     interface Model : IModel{
         fun obtainBanner() : Observable<BaseJson<List<Banner>>>
+        fun getPoster(pid: Int, update: Boolean): Observable<BaseJson<List<PList>>>
+        fun getPAtt(pid: Int, update: Boolean): Observable<BaseJson<List<PAtt>>>
     }
 }

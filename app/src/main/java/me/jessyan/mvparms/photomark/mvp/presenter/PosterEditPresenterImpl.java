@@ -3,6 +3,7 @@ import android.app.Application;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
@@ -61,7 +62,7 @@ public class PosterEditPresenterImpl extends BasePresenter<PosterEditContract.Mo
     static final int MaxCoverWidth = 456;
     static final int MaxLayerWidth = 400;
     private Poster mPoster;
-
+    private List<TextView> textViews = new ArrayList<>();
     @Inject
     public PosterEditPresenterImpl(PosterEditContract.Model model, PosterEditContract.View rootView, RxErrorHandler handler
             , AppManager appManager, Application application) {
@@ -173,7 +174,9 @@ public class PosterEditPresenterImpl extends BasePresenter<PosterEditContract.Mo
         for (int i = 0; i < size; i++) {
             PAtt pAtt = list.get(i);
             if(pAtt.isIsimage())continue;
-            int width = pAtt.getAwidth(), height = pAtt.getAheight();
+//            int width = pAtt.getAwidth(), height = pAtt.getAheight();
+            int width = (int) pAtt.getWidth(), height = (int) pAtt.getHeight();
+
             int LGravity = pAtt.getLayoutgravity(), gravity = pAtt.getGravity();
             int topMargin = pAtt.getTopmargin();
             int leftMargin = pAtt.getLeftmargin(), rightMargin = pAtt.getRightmargin();
@@ -181,7 +184,8 @@ public class PosterEditPresenterImpl extends BasePresenter<PosterEditContract.Mo
             int color = Color.parseColor(pAtt.getTextcolor());
 
             TextView textView = new TextView(mApplication);
-//            textView.setBackgroundColor(Color.BLUE);
+            textView.setBackgroundResource(R.mipmap.ic_red_line);
+//            textView.setBackgroundColor(Color.GREEN);
             textView.setTextSize(textSize * scale);
             textView.setTextColor(color);
             textView.setText(pAtt.getTextstring());
@@ -238,6 +242,7 @@ public class PosterEditPresenterImpl extends BasePresenter<PosterEditContract.Mo
             layoutParams.leftMargin = UiUtils.dip2px(leftMargin * scale);
 
             mRootView.addView(textView,layoutParams);
+            textViews.add(textView);
         }      
     }
 
@@ -280,8 +285,20 @@ public class PosterEditPresenterImpl extends BasePresenter<PosterEditContract.Mo
             if (mRootView == null) return;
             mRootView.showPosterView(model);
             loadTexts(mPoster);
+            handler.postDelayed(runnable,2*1000);
         }
     }
+
+    Handler handler = new Handler();
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            for (TextView textView : textViews){
+                textView.setBackgroundColor(Color.TRANSPARENT);
+            }
+            textViews.clear();
+        }
+    };
 
     public void requestFont(){
         mModel.getFont()

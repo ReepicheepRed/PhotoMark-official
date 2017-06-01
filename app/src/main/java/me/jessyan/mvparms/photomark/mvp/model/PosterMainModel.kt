@@ -9,6 +9,8 @@ import me.jessyan.mvparms.photomark.mvp.model.api.cache.CacheManager
 import me.jessyan.mvparms.photomark.mvp.model.api.service.ServiceManager
 import me.jessyan.mvparms.photomark.mvp.model.entity.Banner
 import me.jessyan.mvparms.photomark.mvp.model.entity.BaseJson
+import me.jessyan.mvparms.photomark.mvp.model.entity.PAtt
+import me.jessyan.mvparms.photomark.mvp.model.entity.PList
 import rx.Observable
 import javax.inject.Inject
 
@@ -37,6 +39,15 @@ constructor(serviceManager: ServiceManager, cacheManager: CacheManager, private 
         super.onDestory()
         this.mGson = null
         this.mApplication = null
+    }
+
+    override fun getPoster(pid: Int, update: Boolean): Observable<BaseJson<List<PList>>> {
+        return mServiceManager.posterService.getSpecificPoster(pid)
+
+    }
+
+    override fun getPAtt(pid: Int, update: Boolean): Observable<BaseJson<List<PAtt>>> {
+        return mServiceManager.posterService.getPAtt(pid)
     }
 
 }

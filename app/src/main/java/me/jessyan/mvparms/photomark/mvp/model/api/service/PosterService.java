@@ -28,6 +28,9 @@ public interface PosterService {
     @GET("/Poster/PosterList.ashx?client=1")
     Observable<BaseJson<List<PList>>> getPosters(@Query("type") int type);
 
+    @GET("/Poster/PosterList.ashx?client=1")
+    Observable<BaseJson<List<PList>>> getSpecificPoster(@Query("pid") int pid);
+
     @GET("/Poster/AndroidPosterDetial.ashx")
     Observable<BaseJson<List<PAtt>>> getPAtt(@Query("pid") int pid);
 
