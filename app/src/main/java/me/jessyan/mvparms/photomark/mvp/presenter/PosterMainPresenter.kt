@@ -87,7 +87,10 @@ constructor(model: PosterMainContract.Model, rootView: PosterMainContract.View, 
                 .subscribe(object : ErrorHandleSubscriber<BaseJson<List<PList>>>(mErrorHandler) {
                     override fun onNext(result: BaseJson<List<PList>>) {
                         poster?.intro = result.data[0]
-                        if (poster?.atts != null) mRootView.launchActivity(Intent(mApplication,PosterEditActivity::class.java).putExtra("poster",poster))
+                        if (poster?.atts?.size!! <= 0) {
+                            return
+                        }
+                        mRootView.launchActivity(Intent(mApplication,PosterEditActivity::class.java).putExtra("poster",poster))
                     }
                 })
     }
@@ -108,7 +111,10 @@ constructor(model: PosterMainContract.Model, rootView: PosterMainContract.View, 
                 .subscribe(object : ErrorHandleSubscriber<BaseJson<List<PAtt>>>(mErrorHandler) {
                     override fun onNext(result: BaseJson<List<PAtt>>) {
                         poster?.atts = result.data
-                        if (poster?.intro != null) mRootView.launchActivity(Intent(mApplication,PosterEditActivity::class.java).putExtra("poster",poster))
+                        if (poster?.intro?.backgroundsrc.isNullOrEmpty()) {
+                            return
+                        }
+                        mRootView.launchActivity(Intent(mApplication,PosterEditActivity::class.java).putExtra("poster",poster))
                     }
                 })
     }

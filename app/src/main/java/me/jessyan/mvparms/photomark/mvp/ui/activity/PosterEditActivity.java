@@ -340,7 +340,8 @@ public class PosterEditActivity extends WEActivity<PosterEditPresenterImpl>imple
                     ModelView modelView = posterView.getModelView();
                     selectedLayer.resetLayer(bitmap,bitmap);
                     selectedLayer.caculateDrawLayer(modelView.getWidth() * 1.0f / 720);
-                    modelView.invalidate();
+//                    modelView.invalidate();
+                    modelView.releaseAllFocus();
                 }
             });
         } catch (Exception e) {
