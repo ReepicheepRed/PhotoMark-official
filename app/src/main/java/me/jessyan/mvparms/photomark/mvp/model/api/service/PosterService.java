@@ -8,8 +8,11 @@ import me.jessyan.mvparms.photomark.mvp.model.entity.Font;
 import me.jessyan.mvparms.photomark.mvp.model.entity.PAtt;
 import me.jessyan.mvparms.photomark.mvp.model.entity.PList;
 import me.jessyan.mvparms.photomark.mvp.model.entity.PType;
+import okhttp3.ResponseBody;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
+import retrofit2.http.Streaming;
+import retrofit2.http.Url;
 import rx.Observable;
 
 /**
@@ -21,9 +24,7 @@ public interface PosterService {
 
     String HEADER_API_VERSION = "Accept: application/vnd.github.v3+json";
 
-//    @Headers({HEADER_API_VERSION})
-//    @GET("/Poster/PosterList.ashx")
-//    Observable<BaseJson<List<PList>>> getPosters(@Query("type") int type, @Query("per_page") int perPage);
+    String MESSAGE_PROGRESS = "message_progress";
 
     @GET("/Poster/PosterList.ashx?client=1")
     Observable<BaseJson<List<PList>>> getPosters(@Query("type") int type);
@@ -42,4 +43,8 @@ public interface PosterService {
 
     @GET("/Banner/banner.ashx?client=1")
     Observable<BaseJson<List<Banner>>> getBanner();
+
+    @Streaming
+    @GET
+    Observable<ResponseBody> download(@Url String url);
 }

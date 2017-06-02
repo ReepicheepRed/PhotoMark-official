@@ -1,5 +1,7 @@
 package me.jessyan.mvparms.photomark.mvp.model.entity;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 /**
@@ -17,6 +19,7 @@ public class Banner implements Serializable{
 
     private int bid;
     private int pid;
+    @SerializedName("tid")
     private int type;
     private String img;
     private String link;

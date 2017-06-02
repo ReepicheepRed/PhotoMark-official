@@ -17,7 +17,7 @@ import me.jessyan.mvparms.photomark.mvp.ui.activity.PosterMainActivity
  */
 
 /**
- * Created by zhiPeng.S on 2017/5/31.
+ * Created by zhiPeng.S on 2017/6/2.
  */
 
 @ActivityScope

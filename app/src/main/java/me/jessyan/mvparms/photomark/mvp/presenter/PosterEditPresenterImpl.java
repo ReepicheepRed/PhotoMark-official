@@ -1,9 +1,14 @@
 package me.jessyan.mvparms.photomark.mvp.presenter;
 import android.app.Application;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Handler;
+import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
@@ -27,8 +32,10 @@ import java.util.List;
 import javax.inject.Inject;
 
 import me.jessyan.mvparms.photomark.R;
+import me.jessyan.mvparms.photomark.app.service.DownloadService;
 import me.jessyan.mvparms.photomark.mvp.contract.PosterEditContract;
 import me.jessyan.mvparms.photomark.mvp.model.entity.BaseJson;
+import me.jessyan.mvparms.photomark.mvp.model.entity.Download;
 import me.jessyan.mvparms.photomark.mvp.model.entity.Font;
 import me.jessyan.mvparms.photomark.mvp.model.entity.PAtt;
 import me.jessyan.mvparms.photomark.mvp.model.entity.Poster;
@@ -41,6 +48,7 @@ import rx.schedulers.Schedulers;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+import static me.jessyan.mvparms.photomark.mvp.model.api.service.PosterService.MESSAGE_PROGRESS;
 
 /**
 * Created by zhiPeng.S on 2017/05/05
@@ -174,6 +182,13 @@ public class PosterEditPresenterImpl extends BasePresenter<PosterEditContract.Mo
         for (int i = 0; i < size; i++) {
             PAtt pAtt = list.get(i);
             if(pAtt.isIsimage())continue;
+            int fid = pAtt.getFontid();
+            if(fid != 1 && fid != 2 && fid != 3){
+                Intent intent = new Intent(mApplication, DownloadService.class);
+                intent.putExtra("fontUrl",pAtt.getFontlink());
+//                mApplication.startService(intent);
+            }
+
 //            int width = pAtt.getAwidth(), height = pAtt.getAheight();
             int width = (int) pAtt.getWidth(), height = (int) pAtt.getHeight();
 
@@ -244,6 +259,36 @@ public class PosterEditPresenterImpl extends BasePresenter<PosterEditContract.Mo
             mRootView.addView(textView,layoutParams);
             textViews.add(textView);
         }      
+    }
+
+    private void loadTextFont(Poster poster){
+
+    }
+
+    private LocalBroadcastManager bManager;
+    private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            if (intent.getAction().equals(MESSAGE_PROGRESS)) {
+
+                Download download = intent.getParcelableExtra("download");
+
+                if (download.getProgress() == 100) {
+
+
+                }
+            }
+        }
+    };
+
+    private void registerReceiver() {
+
+        bManager = LocalBroadcastManager.getInstance(mApplication);
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(MESSAGE_PROGRESS);
+        bManager.registerReceiver(broadcastReceiver, intentFilter);
+
     }
 
     @Override
