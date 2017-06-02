@@ -6,7 +6,6 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import me.jessyan.mvparms.photomark.mvp.model.api.service.CommonService;
-import me.jessyan.mvparms.photomark.mvp.model.api.service.PosterEditService;
 import me.jessyan.mvparms.photomark.mvp.model.api.service.PosterService;
 import me.jessyan.mvparms.photomark.mvp.model.api.service.UserService;
 import retrofit2.Retrofit;
@@ -35,11 +34,6 @@ public class ServiceModule {
         return retrofit.create(PosterService.class);
     }
 
-    @Singleton
-    @Provides
-    PosterEditService providePosterEditService(Retrofit retrofit) {
-        return retrofit.create(PosterEditService.class);
-    }
 
 
 }

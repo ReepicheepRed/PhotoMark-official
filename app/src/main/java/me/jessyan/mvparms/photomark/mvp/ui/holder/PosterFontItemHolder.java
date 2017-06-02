@@ -30,7 +30,7 @@ public class PosterFontItemHolder extends BaseHolder<Font> {
     TextView mName;
 
     @BindView(R.id.iPoster_font_pb)
-    private ProgressBar progress;
+    ProgressBar progress;
 
     private Font curFont;
 
