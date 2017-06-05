@@ -41,4 +41,5 @@
     <dimen name="height_838px">419dp</dimen>
     <dimen name="margin_190px">95dp</dimen>
     <dimen name="height_500px">250dp</dimen>
+    <dimen name="margin_222px">111dp</dimen>
 </resources>

@@ -88,7 +88,7 @@
                     android:gravity="center_vertical"
                     android:onClick="@{popup::onClick}"
                     android:paddingLeft="@dimen/margin_80px"
-                    android:text="Text"
+                    android:text="Font"
                     android:textColor="@color/gray_70_c"
                     android:textSize="@dimen/text_30px" />
 

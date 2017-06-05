@@ -27,9 +27,9 @@
         android:layout_height="@dimen/height_88px"
         android:background="@color/gray_3fe_c"
         android:drawableLeft="@mipmap/ic_saved_tb"
-        android:drawablePadding="@dimen/margin_36px"
+        android:drawablePadding="@dimen/margin_20px"
         android:gravity="center_vertical"
-        android:paddingLeft="@dimen/margin_272px"
+        android:paddingLeft="@dimen/margin_222px"
         android:text="@string/save_tip"
         android:textColor="@color/gray_93_c"
         android:textSize="@dimen/text_32px" />

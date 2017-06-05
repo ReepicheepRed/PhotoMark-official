@@ -44,7 +44,8 @@
 
         <service android:name=".app.service.DownloadService" />
         <activity
-            android:name=".mvp.ui.activity.PosterMainActivity">
+            android:name=".mvp.ui.activity.PosterMainActivity"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -58,7 +59,7 @@
                 <!--<category android:name="android.intent.category.LAUNCHER" />-->
             <!--</intent-filter>-->
         </activity>
-        <activity android:name=".mvp.ui.activity.PosterEditActivity" />
+        <activity android:name=".mvp.ui.activity.PosterEditActivity" android:launchMode="singleTop"/>
         <activity android:name=".mvp.ui.activity.SaveActivity" />
 
     </application>

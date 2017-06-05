@@ -144,7 +144,7 @@ public class PosterEditPresenterImpl extends BasePresenter<PosterEditContract.Mo
 //                    Bitmap bitmap = requestManager.load(R.mipmap.ic_upload).asBitmap().into(
 //                            UiUtils.dip2px((float) pAtt.getWidth()/2.0f),
 //                            UiUtils.dip2px((float) pAtt.getHeight()/2.0f)).get();
-                    Bitmap bitmap = requestManager.load(R.mipmap.ic_upload).asBitmap().into(MaxLayerWidth,MaxLayerWidth).get();
+                    Bitmap bitmap = requestManager.load(R.mipmap.upload_tb).asBitmap().into(MaxLayerWidth,MaxLayerWidth).get();
                     bitmaps.add(bitmap);
                 }
             }
