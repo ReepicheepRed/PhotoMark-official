@@ -4,7 +4,6 @@ import android.app.IntentService;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Environment;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
@@ -13,6 +12,7 @@ import java.io.File;
 
 import me.jessyan.mvparms.photomark.R;
 import me.jessyan.mvparms.photomark.app.download.DownloadProgressListener;
+import me.jessyan.mvparms.photomark.app.utils.FileUtils;
 import me.jessyan.mvparms.photomark.app.utils.StringUtils;
 import me.jessyan.mvparms.photomark.mvp.model.api.DownloadAPI;
 import me.jessyan.mvparms.photomark.mvp.model.api.service.PosterService;
@@ -67,8 +67,8 @@ public class DownloadService extends IntentService {
                 sendNotification(download);
             }
         };
-        outputFile = new File(Environment.getExternalStorageDirectory() + "/PhotoMark/font/", apkUrl.split("/")[apkUrl.split("/").length-1]);
-
+//        outputFile = new File(Environment.getExternalStorageDirectory() + "/PhotoMark/font/", apkUrl.split("/")[apkUrl.split("/").length-1]);
+        outputFile = new File(FileUtils.convertToSdPath(this,apkUrl));
         if (outputFile.exists()) {
             outputFile.delete();
         }
@@ -116,7 +116,7 @@ public class DownloadService extends IntentService {
 
     private void sendNotification(Download download) {
 
-        sendIntent(download);
+//        sendIntent(download);
         notificationBuilder.setProgress(100, download.getProgress(), false);
         notificationBuilder.setContentText(
                 StringUtils.getDataSize(download.getCurrentFileSize()) + "/" +

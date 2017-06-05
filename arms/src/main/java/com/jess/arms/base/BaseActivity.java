@@ -71,7 +71,6 @@ public abstract class BaseActivity<P extends Presenter> extends RxAppCompatActiv
     @Nullable
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        FullScreencall();
         super.onCreate(savedInstanceState);
         mApplication = (BaseApplication) getApplication();
         //如果intent包含了此字段,并且为true说明不加入到list

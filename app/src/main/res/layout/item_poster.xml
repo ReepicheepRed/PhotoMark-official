@@ -10,7 +10,7 @@
         android:id="@+id/iPoster_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleType="centerCrop"
+        android:scaleType="fitXY"
         tools:src="#000000" />
 
 </FrameLayout>

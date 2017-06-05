@@ -23,10 +23,11 @@
 
     <ProgressBar
         android:id="@+id/iPoster_font_pb"
-        style="?android:attr/progressBarStyle"
-        android:indeterminate="false"
+        style="?android:attr/progressBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@mipmap/ic_font_download"/>
+        android:background="@mipmap/ic_font_download"
+        android:indeterminate="false"
+        android:layout_margin="@dimen/margin_30px" />
 
 </LinearLayout>

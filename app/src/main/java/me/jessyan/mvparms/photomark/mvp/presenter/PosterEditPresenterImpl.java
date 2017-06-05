@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.v4.content.LocalBroadcastManager;
@@ -27,12 +28,14 @@ import com.martin.poster.Layer;
 import com.martin.poster.Model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import me.jessyan.mvparms.photomark.R;
 import me.jessyan.mvparms.photomark.app.service.DownloadService;
+import me.jessyan.mvparms.photomark.app.utils.FileUtils;
 import me.jessyan.mvparms.photomark.mvp.contract.PosterEditContract;
 import me.jessyan.mvparms.photomark.mvp.model.entity.BaseJson;
 import me.jessyan.mvparms.photomark.mvp.model.entity.Download;
@@ -71,6 +74,7 @@ public class PosterEditPresenterImpl extends BasePresenter<PosterEditContract.Mo
     static final int MaxLayerWidth = 400;
     private Poster mPoster;
     private List<TextView> textViews = new ArrayList<>();
+    private List<PAtt> textAttrs = new ArrayList<>();
     @Inject
     public PosterEditPresenterImpl(PosterEditContract.Model model, PosterEditContract.View rootView, RxErrorHandler handler
             , AppManager appManager, Application application) {
@@ -81,6 +85,7 @@ public class PosterEditPresenterImpl extends BasePresenter<PosterEditContract.Mo
         mAdapter = new PosterRecentlyAdapter(data);
         mAdapter.setOnItemClickListener(this);
         mRootView.setAdapter(mAdapter);//设置Adapter
+        registerReceiver();
     }
 
     public void requestPoster() {
@@ -108,7 +113,9 @@ public class PosterEditPresenterImpl extends BasePresenter<PosterEditContract.Mo
                 .subscribe(new ErrorHandleSubscriber<BaseJson<List<Poster>>>(mErrorHandler) {
                     @Override
                     public void onNext(BaseJson<List<Poster>> result) {
-                        data.addAll(result.getData());
+                        List<Poster> list = result.getData();
+                        Collections.reverse(list);
+                        data.addAll(list);
                         mAdapter.notifyDataSetChanged();//通知更新数据
                     }
                 });
@@ -118,6 +125,12 @@ public class PosterEditPresenterImpl extends BasePresenter<PosterEditContract.Mo
         mPoster = poster;
         mRootView.setPosterViewSize(poster);
         new ShowPosterTask().execute();
+        textAttrs.addAll(poster.getAtts());
+        for (int i = 0; i < textAttrs.size(); i++) {
+            if(textAttrs.get(i).isIsimage()){
+                textAttrs.remove(i);
+            }
+        }
     }
 
     private void loadImages(Poster poster){
@@ -182,14 +195,6 @@ public class PosterEditPresenterImpl extends BasePresenter<PosterEditContract.Mo
         for (int i = 0; i < size; i++) {
             PAtt pAtt = list.get(i);
             if(pAtt.isIsimage())continue;
-            int fid = pAtt.getFontid();
-            if(fid != 1 && fid != 2 && fid != 3){
-                Intent intent = new Intent(mApplication, DownloadService.class);
-                intent.putExtra("fontUrl",pAtt.getFontlink());
-//                mApplication.startService(intent);
-            }
-
-//            int width = pAtt.getAwidth(), height = pAtt.getAheight();
             int width = (int) pAtt.getWidth(), height = (int) pAtt.getHeight();
 
             int LGravity = pAtt.getLayoutgravity(), gravity = pAtt.getGravity();
@@ -258,11 +263,39 @@ public class PosterEditPresenterImpl extends BasePresenter<PosterEditContract.Mo
 
             mRootView.addView(textView,layoutParams);
             textViews.add(textView);
+            loadTextFont(pAtt.getFontlink());
         }      
     }
 
-    private void loadTextFont(Poster poster){
 
+
+
+    private void loadTextFont(String link){
+        for (int i = 0; i < textAttrs.size(); i++) {
+            PAtt patt  = textAttrs.get(i);
+            if(patt.getFontlink().equals(link)){
+                checkFont(i,link);
+            }
+        }
+    }
+
+    private void checkFont(int i,String link){
+        try{
+            if(FileUtils.isSavedToSd(mApplication,link)){
+                Typeface typeface = Typeface.createFromFile(FileUtils.convertToSdPath(mApplication,link));
+                textViews.get(i).setTypeface(typeface);
+                return;
+            }
+            loadFontRes(link);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private void loadFontRes(String link){
+        Intent intent = new Intent(mApplication, DownloadService.class);
+        intent.putExtra("fontUrl",link);
+        mApplication.startService(intent);
     }
 
     private LocalBroadcastManager bManager;
@@ -275,8 +308,7 @@ public class PosterEditPresenterImpl extends BasePresenter<PosterEditContract.Mo
                 Download download = intent.getParcelableExtra("download");
 
                 if (download.getProgress() == 100) {
-
-
+                    loadTextFont(download.getFileUrl());
                 }
             }
         }
@@ -341,7 +373,7 @@ public class PosterEditPresenterImpl extends BasePresenter<PosterEditContract.Mo
             for (TextView textView : textViews){
                 textView.setBackgroundColor(Color.TRANSPARENT);
             }
-            textViews.clear();
+//            textViews.clear();
         }
     };
 
