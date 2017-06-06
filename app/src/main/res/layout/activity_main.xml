@@ -39,6 +39,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:padding="@dimen/margin_30px"
+        android:onClick="onClick"
         android:src="@mipmap/ic_settings_tb" />
 
     <TextView

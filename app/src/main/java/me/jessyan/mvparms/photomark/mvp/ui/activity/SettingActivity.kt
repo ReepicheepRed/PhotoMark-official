@@ -11,12 +11,14 @@ import com.jess.arms.utils.Preconditions.checkNotNull
 import com.jess.arms.utils.UiUtils
 import common.AppComponent
 import common.WEActivity
+import kotlinx.android.synthetic.main.actionbar_base.*
 import kotlinx.android.synthetic.main.activity_setting.*
 import me.jessyan.mvparms.photomark.R
 import me.jessyan.mvparms.photomark.di.component.DaggerSettingComponent
 import me.jessyan.mvparms.photomark.di.module.SettingModule
 import me.jessyan.mvparms.photomark.mvp.contract.SettingContract
 import me.jessyan.mvparms.photomark.mvp.presenter.SettingPresenter
+import me.jessyan.mvparms.photomark.mvp.ui.widget.SettingDecoration
 
 /**
  * 通过Template生成对应页面的MVP和Dagger代码,请注意输入框中输入的名字必须相同
@@ -48,7 +50,15 @@ class SettingActivity : WEActivity<SettingPresenter>(), SettingContract.View {
     }
 
     override fun initData() {
+        headline.text = getString(R.string.setting)
+        back_iv.setOnClickListener(this)
+    }
 
+    override fun onClick(v: View?) {
+        super.onClick(v)
+        when(v?.id){
+            R.id.back_iv -> killMyself()
+        }
     }
 
     override fun setAdapter(adapter: DefaultAdapter<*>) {
@@ -63,7 +73,7 @@ class SettingActivity : WEActivity<SettingPresenter>(), SettingContract.View {
         //如果可以确定每个item的高度是固定的，设置这个选项可以提高性能
         recyclerView.setHasFixedSize(true)
         recyclerView.itemAnimator = DefaultItemAnimator()
-//        recyclerView.addItemDecoration(RecyclerView.ItemDecoration)
+        recyclerView.addItemDecoration(SettingDecoration(this))
     }
 
     override fun showLoading() {

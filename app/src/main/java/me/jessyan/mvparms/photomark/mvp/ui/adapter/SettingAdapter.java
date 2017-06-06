@@ -15,16 +15,10 @@ import me.jessyan.mvparms.photomark.mvp.ui.holder.SettingItemHolder;
  * Contact with jess.yan.effort@gmail.com
  */
 public class SettingAdapter extends DefaultAdapter<String> {
-    private int count = 12;
 
     public SettingAdapter(List<String> infos) {
         super(infos);
 
-    }
-
-    @Override
-    public int getItemCount() {
-        return count;
     }
 
     @Override

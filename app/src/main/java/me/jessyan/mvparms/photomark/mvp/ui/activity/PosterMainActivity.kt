@@ -128,8 +128,7 @@ class PosterMainActivity : WEActivity<PosterMainPresenter>(), PosterMainContract
     override fun onClick(v: View) {
         val intent = Intent()
         when (v.id) {
-            R.id.main_setting_iv -> {
-            }
+            R.id.main_setting_iv -> intent.setClass(this, SettingActivity::class.java)
             R.id.main_poster_btn -> intent.setClass(this, PosterActivity::class.java)
         }
         launchActivity(intent)
