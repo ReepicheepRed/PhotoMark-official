@@ -1,11 +1,15 @@
 package me.jessyan.mvparms.photomark.mvp.presenter
 
 import android.app.Application
+import android.view.View
 import com.jess.arms.base.AppManager
+import com.jess.arms.base.DefaultAdapter
 import com.jess.arms.di.scope.ActivityScope
 import com.jess.arms.mvp.BasePresenter
+import com.jess.arms.utils.UiUtils.makeText
 import com.jess.arms.widget.imageloader.ImageLoader
 import me.jessyan.mvparms.photomark.mvp.contract.SettingContract
+import me.jessyan.mvparms.photomark.mvp.ui.adapter.SettingAdapter
 import me.jessyan.rxerrorhandler.core.RxErrorHandler
 import javax.inject.Inject
 
@@ -26,7 +30,20 @@ import javax.inject.Inject
 
 @ActivityScope
 class SettingPresenter @Inject
-constructor(model: SettingContract.Model, rootView: SettingContract.View, private var mErrorHandler: RxErrorHandler?, private var mApplication: Application?, private var mImageLoader: ImageLoader?, private var mAppManager: AppManager?) : BasePresenter<SettingContract.Model, SettingContract.View>(model, rootView) {
+constructor(model: SettingContract.Model, rootView: SettingContract.View, private var mErrorHandler: RxErrorHandler?, private var mApplication: Application?, private var mImageLoader: ImageLoader?, private var mAppManager: AppManager?) : BasePresenter<SettingContract.Model, SettingContract.View>(model, rootView),DefaultAdapter.OnRecyclerViewItemClickListener<String> {
+
+    var adapter : DefaultAdapter<*>? = null
+    val items  = listOf("Email Us", "Rate & Review", "Share", "Clean cache", "Facebook", "Instagram", "Twitter")
+
+    init {
+        adapter = SettingAdapter(items)
+        adapter?.setOnItemClickListener(this)
+        mRootView.setAdapter(adapter!!)
+    }
+
+    override fun onItemClick(view: View?, data: String?, position: Int) {
+        makeText(data)
+    }
 
     override fun onDestroy() {
         super.onDestroy()

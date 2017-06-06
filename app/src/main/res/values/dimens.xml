@@ -17,6 +17,7 @@
     <dimen name="height_90px">45dp</dimen>
     <dimen name="height_162px">81dp</dimen>
     <dimen name="divider_2px">1dp</dimen>
+    <dimen name="divider_1px">0.5dp</dimen>
     <dimen name="height_88px">44dp</dimen>
     <dimen name="margin_24px">12dp</dimen>
     <dimen name="text_30px">15sp</dimen>
@@ -42,4 +43,6 @@
     <dimen name="margin_190px">95dp</dimen>
     <dimen name="height_500px">250dp</dimen>
     <dimen name="margin_222px">111dp</dimen>
+    <dimen name="margin_28px">14dp</dimen>
+    <dimen name="margin_10px">5dp</dimen>
 </resources>
